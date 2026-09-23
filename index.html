@@ -377,12 +377,12 @@
           <span class="text-rose-600">
             <span class="lang-en">Critical:</span>
             <span class="lang-zh">极高:</span>
-            <b id="critCount" class="font-bold ml-0.5">1</b>
+            <b id="critCount" class="font-bold ml-0.5">3</b>
           </span>
           <span class="text-amber-600">
             <span class="lang-en">High:</span>
             <span class="lang-zh">高:</span>
-            <b id="highCount" class="font-bold ml-0.5">4</b>
+            <b id="highCount" class="font-bold ml-0.5">2</b>
           </span>
           <span class="text-blue-600">
             <span class="lang-en">Medium:</span>
@@ -537,13 +537,13 @@
             </td>
           </tr>
 
-          <!-- Row 02: Sensor Wiper (HIGH) -->
-          <tr data-priority="2" data-id="02" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+          <!-- Row 02: Sensor Wiper (CRITICAL) -->
+          <tr data-priority="1" data-id="02" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
             <td class="py-3 px-2.5 text-center font-bold text-slate-400">02</td>
             <td class="py-3 px-3 text-center">
-              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 cursor-pointer w-full text-center">
-                <option value="1">P1 • CRITICAL (极高)</option>
-                <option value="2" selected>P2 • HIGH (高)</option>
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200 cursor-pointer w-full text-center">
+                <option value="1" selected>P1 • CRITICAL (极高)</option>
+                <option value="2">P2 • HIGH (高)</option>
                 <option value="3">P3 • MEDIUM (中)</option>
                 <option value="4">P4 • LOW (低)</option>
               </select>
@@ -595,13 +595,13 @@
             </td>
           </tr>
 
-          <!-- Row 03: Data Disparity (HIGH) -->
-          <tr data-priority="2" data-id="03" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+          <!-- Row 03: Data Disparity (CRITICAL) -->
+          <tr data-priority="1" data-id="03" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
             <td class="py-3 px-2.5 text-center font-bold text-slate-400">03</td>
             <td class="py-3 px-3 text-center">
-              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 cursor-pointer w-full text-center">
-                <option value="1">P1 • CRITICAL (极高)</option>
-                <option value="2" selected>P2 • HIGH (高)</option>
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200 cursor-pointer w-full text-center">
+                <option value="1" selected>P1 • CRITICAL (极高)</option>
+                <option value="2">P2 • HIGH (高)</option>
                 <option value="3">P3 • MEDIUM (中)</option>
                 <option value="4">P4 • LOW (低)</option>
               </select>
