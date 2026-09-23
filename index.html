@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WaterSense & Yunnan Deployments - Bilingual Technical Matrix</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Language visibility rules */
+    body.mode-en .lang-zh { display: none !important; }
+    body.mode-zh .lang-en { display: none !important; }
+    body.mode-bilingual span.lang-en,
+    body.mode-bilingual span.lang-zh { display: inline; }
+    body.mode-bilingual div.lang-en,
+    body.mode-bilingual div.lang-zh { display: block; }
+
+    /* Hide bilingual toggle button and simultaneous mode (preserved in DOM, hidden via CSS) */
+    #btnLangAll {
+      display: none !important;
+    }
+
+    /* Print styling rules */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        font-size: 10.5px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      table {
+        page-break-inside: auto;
+      }
+      tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+      textarea {
+        border: none !important;
+        resize: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+      }
+      select {
+        border: none !important;
+        appearance: none !important;
+        background: transparent !important;
+        font-weight: 600;
+        padding: 0 !important;
+      }
+    }
+
+    /* Clean scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="mode-en bg-slate-100 text-slate-800 antialiased min-h-screen p-3 md:p-6 transition-all">
+
+  <div class="max-w-[1550px] mx-auto bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden print-container">
+    
+    <!-- Top Action Bar with Dual Enterprise Branding -->
+    <header class="no-print bg-slate-900 text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-4 border-b border-slate-800">
+      <div class="flex items-center gap-4 flex-wrap">
+        
+        <!-- Dual Corporate Brand Block -->
+        <div class="flex items-center gap-3 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/80 shadow-inner">
+          
+          <!-- Yunnan Noevera (知恒智合) Brand SVG -->
+          <div class="flex items-center gap-2">
+            <svg class="w-8 h-8 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="navNoeveraRing" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#4ade80"/>
+                  <stop offset="45%" stop-color="#22c55e"/>
+                  <stop offset="70%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+                <linearGradient id="navLeafGrad" x1="20" y1="20" x2="70" y2="70" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#84cc16"/>
+                  <stop offset="100%" stop-color="#16a34a"/>
+                </linearGradient>
+                <linearGradient id="navTechGrad" x1="30" y1="40" x2="85" y2="85" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+              </defs>
+              <circle cx="50" cy="50" r="44" stroke="url(#navNoeveraRing)" stroke-width="5.5" fill="#0f172a"/>
+              <path d="M 40 60 Q 55 48 70 50 L 88 50 A 44 44 0 0 1 50 94 C 42 94 36 90 35 85 Z" fill="url(#navTechGrad)"/>
+              <path d="M 38 74 L 50 63 L 64 63 L 75 56 L 75 68 L 65 74 L 55 83" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="38" cy="74" r="5" fill="#0f172a" stroke="white" stroke-width="2.5"/>
+              <circle cx="50" cy="63" r="3.2" fill="white"/>
+              <circle cx="64" cy="63" r="3.2" fill="white"/>
+              <circle cx="75" cy="56" r="3.2" fill="white"/>
+              <circle cx="75" cy="68" r="3.2" fill="white"/>
+              <circle cx="65" cy="74" r="3.2" fill="white"/>
+              <circle cx="55" cy="83" r="3.2" fill="white"/>
+              <path d="M 38 70 C 37 54 44 38 66 18 C 77 34 72 56 46 62 Z" fill="url(#navLeafGrad)"/>
+              <path d="M 21 54 C 20 40 27 30 44 24 C 47 38 41 52 27 58 Z" fill="#22c55e"/>
+              <path d="M 38 72 C 38 52 46 36 66 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 31 52 C 33 42 38 34 44 24" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <div class="leading-tight">
+              <span class="font-bold text-xs tracking-tight text-white block">Noevera</span>
+              <span class="text-[10px] text-emerald-400 font-medium block">知恒智合</span>
+            </div>
+          </div>
+
+          <!-- Partnership Divider -->
+          <div class="h-5 w-px bg-slate-700"></div>
+
+          <!-- WaterSense Brand SVG -->
+          <div class="flex items-center gap-1.5">
+            <svg class="h-6 w-auto" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="8" fill="#2563EB"/>
+              <path d="M6 24.5C11 24.5 13.5 19.5 18 19.5C22.5 19.5 25 24.5 30 24.5" stroke="white" stroke-width="3" stroke-linecap="round"/>
+              <path d="M6 18C11 18 13.5 13 18 13C22.5 13 25 18 30 18" stroke="white" stroke-width="3" stroke-linecap="round"/>
+              <path d="M6 11.5C11 11.5 13.5 6.5 18 6.5C22.5 6.5 25 11.5 30 11.5" stroke="white" stroke-width="3" stroke-linecap="round"/>
+              <text x="44" y="25" font-family="'Inter', system-ui, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" letter-spacing="-0.4">Water<tspan font-weight="400">Sense</tspan></text>
+            </svg>
+          </div>
+        </div>
+
+        <div>
+          <h1 class="font-bold text-base md:text-lg leading-snug flex items-center gap-2">
+            <span class="lang-en">Technical Review & Action Items Tracker</span>
+            <span class="lang-zh text-cyan-300">技术复盘与行动项跟进表</span>
+          </h1>
+          <p class="text-xs text-slate-400 flex items-center gap-2">
+            <span class="lang-en">Yunnan 1 & 2 Deployments • WaterSense & Noevera Technical Coordination</span>
+            <span class="lang-zh text-slate-400">云南1号与2号部署项目 • 知恒智合与 WaterSense 双边技术协调会</span>
+          </p>
+        </div>
+      </div>
+      
+      <!-- Right Controls: Language Selector & Actions -->
+      <div class="flex flex-wrap items-center gap-2.5">
+        
+        <!-- Language Switcher Pills -->
+        <div class="flex items-center bg-slate-800 p-1 rounded-lg border border-slate-700 text-xs font-semibold">
+          <span class="px-2 text-slate-400 text-[11px]"><i class="fa-solid fa-language text-cyan-400"></i> Lang:</span>
+          <!-- Hidden bilingual option (intact in DOM, hidden via display: none) -->
+          <button id="btnLangAll" onclick="switchLanguage('bilingual')" style="display: none !important;" class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition">
+            双语 / Both
+          </button>
+          <button id="btnLangEn" onclick="switchLanguage('en')" class="px-2.5 py-1 rounded-md bg-cyan-600 text-white transition shadow-sm">
+            English
+          </button>
+          <button id="btnLangZh" onclick="switchLanguage('zh')" class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition">
+            中文
+          </button>
+        </div>
+
+        <!-- Add Item -->
+        <button onclick="addNewRow()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-lg shadow-sm transition">
+          <i class="fa-solid fa-plus"></i>
+          <span class="lang-en">Add Item</span>
+          <span class="lang-zh">添加事项</span>
+        </button>
+
+        <!-- Copy Summary to Clipboard -->
+        <button onclick="copySummaryToClipboard()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-lg border border-slate-700 transition" title="Copy meeting text to clipboard">
+          <i class="fa-solid fa-clipboard"></i>
+          <span class="lang-en">Copy Notes</span>
+          <span class="lang-zh">复制纪要</span>
+        </button>
+
+        <!-- Export / Print PDF -->
+        <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold rounded-lg shadow-sm transition">
+          <i class="fa-solid fa-file-pdf"></i>
+          <span class="lang-en">Export PDF</span>
+          <span class="lang-zh">导出 PDF</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Document Header Info (Visible on screen and in Print) -->
+    <div class="p-5 pb-4 border-b border-slate-200 bg-slate-50/70">
+      
+      <!-- Bilateral Corporate Header Banner (Screen & Print-ready) -->
+      <div class="mb-4 pb-3 border-b border-slate-200/80 flex flex-wrap items-center justify-between gap-4">
+        
+        <div class="flex items-center gap-4 flex-wrap">
+          <!-- Yunnan Noevera / 知恒智合 Large Brand Mark -->
+          <div class="flex items-center gap-2.5">
+            <svg class="w-10 h-10 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="bodyNoeveraRing" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#4ade80"/>
+                  <stop offset="45%" stop-color="#22c55e"/>
+                  <stop offset="70%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+                <linearGradient id="bodyLeafGrad" x1="20" y1="20" x2="70" y2="70" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#84cc16"/>
+                  <stop offset="100%" stop-color="#16a34a"/>
+                </linearGradient>
+                <linearGradient id="bodyTechGrad" x1="30" y1="40" x2="85" y2="85" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+              </defs>
+              <circle cx="50" cy="50" r="44" stroke="url(#bodyNoeveraRing)" stroke-width="5.5" fill="#ffffff"/>
+              <path d="M 40 60 Q 55 48 70 50 L 88 50 A 44 44 0 0 1 50 94 C 42 94 36 90 35 85 Z" fill="url(#bodyTechGrad)"/>
+              <path d="M 38 74 L 50 63 L 64 63 L 75 56 L 75 68 L 65 74 L 55 83" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="38" cy="74" r="5" fill="#ffffff" stroke="white" stroke-width="2.5"/>
+              <circle cx="50" cy="63" r="3.2" fill="white"/>
+              <circle cx="64" cy="63" r="3.2" fill="white"/>
+              <circle cx="75" cy="56" r="3.2" fill="white"/>
+              <circle cx="75" cy="68" r="3.2" fill="white"/>
+              <circle cx="65" cy="74" r="3.2" fill="white"/>
+              <circle cx="55" cy="83" r="3.2" fill="white"/>
+              <path d="M 38 70 C 37 54 44 38 66 18 C 77 34 72 56 46 62 Z" fill="url(#bodyLeafGrad)"/>
+              <path d="M 21 54 C 20 40 27 30 44 24 C 47 38 41 52 27 58 Z" fill="#22c55e"/>
+              <path d="M 38 72 C 38 52 46 36 66 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 31 52 C 33 42 38 34 44 24" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <div class="font-bold text-sm text-slate-900 leading-tight">
+                <span class="lang-en">Yunnan Noevera Technology</span>
+                <span class="lang-zh">云南知恒智合科技有限公司</span>
+              </div>
+              <div class="text-[11px] text-slate-500 font-medium">
+                <span class="lang-en">Deployment & Operations Lead</span>
+                <span class="lang-zh">项目部署与现场运维执行方</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Strategic Cross Indicator -->
+          <div class="text-slate-300 font-light text-lg select-none">✕</div>
+
+          <!-- WaterSense Large Brand Mark -->
+          <div class="flex items-center gap-2">
+            <svg class="h-8 w-auto" viewBox="0 0 170 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="9" fill="#2563EB"/>
+              <path d="M7 27C12.5 27 15 21.5 20 21.5C25 21.5 27.5 27 33 27" stroke="white" stroke-width="3.2" stroke-linecap="round"/>
+              <path d="M7 20C12.5 20 15 14.5 20 14.5C25 14.5 27.5 20 33 20" stroke="white" stroke-width="3.2" stroke-linecap="round"/>
+              <path d="M7 13C12.5 13 15 7.5 20 7.5C25 7.5 27.5 13 33 13" stroke="white" stroke-width="3.2" stroke-linecap="round"/>
+              <text x="48" y="28" font-family="'Inter', system-ui, sans-serif" font-size="23" font-weight="700" fill="#0f172a" letter-spacing="-0.5">Water<tspan font-weight="400">Sense</tspan></text>
+            </svg>
+            <div class="hidden sm:block pl-1">
+              <div class="text-[11px] text-slate-500 font-medium">
+                <span class="lang-en">Technology & Hardware Partner</span>
+                <span class="lang-zh">核心传感器与硬件技术合作方</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meeting Classification Pill -->
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-slate-100 text-slate-700 border border-slate-300 shadow-sm">
+            <span class="lang-en">Bilateral Technical Protocol</span>
+            <span class="lang-zh">双边技术合作与议题跟踪</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-cyan-100 text-cyan-800 border border-cyan-200">
+              <span class="lang-en">Field Verification Phase</span>
+              <span class="lang-zh">下水实测比对阶段</span>
+            </span>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-purple-100 text-purple-800 border border-purple-200">
+              <span class="lang-en">Cross-Timezone Call</span>
+              <span class="lang-zh">跨时区多方协同</span>
+            </span>
+          </div>
+          
+          <h2 class="text-lg md:text-xl font-bold text-slate-900 leading-snug">
+            <span class="lang-en">Technical Coordination & Water Launch Verification Matrix</span>
+            <span class="lang-zh">设备下水技术协调与测试验证重点清单</span>
+          </h2>
+
+          <p class="text-xs text-slate-600 mt-1 max-w-3xl leading-relaxed">
+            <span class="lang-en">
+              <strong>Objective:</strong> Validate continuous operation, calibrate optical sensors, adjust data transmission interval (10 min), and resolve biofouling. 
+              <strong>Milestone:</strong> Chinese authorities require a <strong>1–2 month comparative trial</strong> against certified lab benchmarks.
+            </span>
+            <span class="lang-zh text-slate-500 block mt-0.5">
+              <strong>会议目标：</strong> 针对云南2号下水运行状态，确认探头标定校准、传输周期调优（锁定为10分钟）、生物防附着及电池供电。
+              <strong>核心里程碑：</strong> 需满足中国主管部门 <strong>1–2 个月正式比对测试期</strong> 的规范要求。
+            </span>
+          </p>
+        </div>
+
+        <!-- Quick Meta Info Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+          <div class="bg-white p-2.5 rounded-lg border border-slate-200 shadow-sm">
+            <span class="text-slate-400 block text-[11px]">
+              <span class="lang-en">Targets</span>
+              <span class="lang-zh">部署目标</span>
+            </span>
+            <span class="font-bold text-slate-800">Yunnan 1 & 2</span>
+          </div>
+          <div class="bg-white p-2.5 rounded-lg border border-slate-200 shadow-sm">
+            <span class="text-slate-400 block text-[11px]">
+              <span class="lang-en">Waterbody</span>
+              <span class="lang-zh">水体环境</span>
+            </span>
+            <span class="font-bold text-slate-800">
+              <span class="lang-en">Dianchi Lake, Kunming</span>
+              <span class="lang-zh">昆明滇池</span>
+            </span>
+          </div>
+          <div class="bg-white p-2.5 rounded-lg border border-slate-200 shadow-sm">
+            <span class="text-slate-400 block text-[11px]">
+              <span class="lang-en">Participants & Roles</span>
+              <span class="lang-zh">参会人员与角色分工</span>
+            </span>
+            <div class="text-[11px] leading-snug mt-0.5 space-y-0.5">
+              <div>
+                <span class="text-slate-500 font-medium">
+                  <span class="lang-en">Host:</span>
+                  <span class="lang-zh">主持人:</span>
+                </span>
+                <span class="font-bold text-slate-800 ml-1">Rambo</span>
+              </div>
+              <div>
+                <span class="text-slate-500 font-medium">WaterSense:</span>
+                <span class="font-bold text-slate-800 ml-1">Mateusz, Kacper</span>
+                <span class="text-slate-400 text-[10px] ml-1">
+                  <span class="lang-en">(Optional: Maks)</span>
+                  <span class="lang-zh">(可选: Maks)</span>
+                </span>
+              </div>
+              <div>
+                <span class="text-slate-500 font-medium">
+                  <span class="lang-en">Yunnan Team:</span>
+                  <span class="lang-zh">云南团队:</span>
+                </span>
+                <span class="font-bold text-slate-800 ml-1">Natalie, Toto</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Metrics & Filter Controls Ribbon -->
+      <div class="mt-4 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+        
+        <!-- Counters -->
+        <div class="flex items-center gap-3 text-slate-600 font-medium">
+          <span>
+            <span class="lang-en">Total Items:</span>
+            <span class="lang-zh">总项:</span>
+            <b id="totalCount" class="text-slate-900 font-bold ml-0.5">9</b>
+          </span>
+          <span class="text-rose-600">
+            <span class="lang-en">Critical:</span>
+            <span class="lang-zh">极高:</span>
+            <b id="critCount" class="font-bold ml-0.5">1</b>
+          </span>
+          <span class="text-amber-600">
+            <span class="lang-en">High:</span>
+            <span class="lang-zh">高:</span>
+            <b id="highCount" class="font-bold ml-0.5">4</b>
+          </span>
+          <span class="text-blue-600">
+            <span class="lang-en">Medium:</span>
+            <span class="lang-zh">中:</span>
+            <b id="medCount" class="font-bold ml-0.5">2</b>
+          </span>
+          <span class="text-slate-500">
+            <span class="lang-en">Low:</span>
+            <span class="lang-zh">低:</span>
+            <b id="lowCount" class="font-bold ml-0.5">2</b>
+          </span>
+        </div>
+
+        <!-- Filter & Search Bar (no-print) -->
+        <div class="no-print flex flex-wrap items-center gap-2">
+          
+          <!-- Search box -->
+          <div class="relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2 text-slate-400 text-xs"></i>
+            <input type="text" id="searchInput" oninput="applyFilters()" placeholder="Filter keyword / 检索关键词..." class="pl-8 pr-2.5 py-1 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-cyan-500 w-44 md:w-56" />
+          </div>
+
+          <!-- Priority Filter -->
+          <div class="flex items-center bg-white rounded-lg border border-slate-300 px-2 py-1">
+            <span class="text-slate-400 mr-1 text-[11px] font-medium">
+              <span class="lang-en">Priority:</span>
+              <span class="lang-zh">优先级:</span>
+            </span>
+            <select id="priorityFilter" onchange="applyFilters()" class="bg-transparent font-medium focus:outline-none cursor-pointer text-slate-700 text-xs">
+              <option value="ALL">All Priorities (全部)</option>
+              <option value="1">P1 • Critical Only (仅极高)</option>
+              <option value="2">P2 • High Only (仅高)</option>
+              <option value="3">P3 • Medium Only (仅中)</option>
+              <option value="4">P4 • Low Only (仅低)</option>
+            </select>
+          </div>
+
+          <!-- Status Filter -->
+          <div class="flex items-center bg-white rounded-lg border border-slate-300 px-2 py-1">
+            <span class="text-slate-400 mr-1 text-[11px] font-medium">
+              <span class="lang-en">Status:</span>
+              <span class="lang-zh">状态:</span>
+            </span>
+            <select id="statusFilter" onchange="applyFilters()" class="bg-transparent font-medium focus:outline-none cursor-pointer text-slate-700 text-xs">
+              <option value="ALL">All Status (全部状态)</option>
+              <option value="Open">Open (待解决)</option>
+              <option value="In Progress">In Progress (进行中)</option>
+              <option value="Pending Info">Pending Info (待补充)</option>
+              <option value="Resolved">Resolved (已解决)</option>
+            </select>
+          </div>
+
+          <!-- Sort Priority Button -->
+          <button onclick="sortByPriority()" class="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg border border-slate-300 transition">
+            <i class="fa-solid fa-arrow-down-wide-short text-cyan-600"></i>
+            <span class="lang-en">Sort Priority</span>
+            <span class="lang-zh">按优先级排序</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse" id="issuesTable">
+        <thead>
+          <tr class="bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider border-b border-slate-300">
+            <th class="py-3 px-2.5 w-12 text-center">ID</th>
+            <th class="py-3 px-3 w-32 text-center">
+              <span class="lang-en">Priority</span>
+              <span class="lang-zh">优先级</span>
+            </th>
+            <th class="py-3 px-4 w-48">
+              <span class="lang-en">Category</span>
+              <span class="lang-zh">议题类别</span>
+            </th>
+            <th class="py-3 px-4 w-80">
+              <span class="lang-en">Field Observation / Issue</span>
+              <span class="lang-zh">现场实测与问题现象</span>
+            </th>
+            <th class="py-3 px-4">
+              <span class="lang-en">Specific Questions for WaterSense Team</span>
+              <span class="lang-zh">提请 WaterSense 团队答复的技术要点</span>
+            </th>
+            <th class="py-3 px-3 w-36 text-center">
+              <span class="lang-en">Status</span>
+              <span class="lang-zh">状态</span>
+            </th>
+            <th class="py-3 px-4 w-72">
+              <span class="lang-en">Meeting Decision & Actions</span>
+              <span class="lang-zh">会议决议与行动项分配</span>
+            </th>
+            <th class="py-3 px-2 w-10 text-center no-print"></th>
+          </tr>
+        </thead>
+        
+        <tbody class="divide-y divide-slate-200 text-xs" id="tableBody">
+
+          <!-- Row 01: Power System (CRITICAL) -->
+          <tr data-priority="1" data-id="01" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-2.5 text-center font-bold text-slate-400">01</td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200 cursor-pointer w-full text-center">
+                <option value="1" selected>P1 • CRITICAL (极高)</option>
+                <option value="2">P2 • HIGH (高)</option>
+                <option value="3">P3 • MEDIUM (中)</option>
+                <option value="4">P4 • LOW (低)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <div class="lang-en font-bold text-slate-800">Power Supply & Battery Drain</div>
+              <div class="lang-zh font-bold text-slate-800">电源供电与电池异常放电</div>
+              <span class="inline-block mt-1 text-[10px] text-slate-400">Hardware / Power Reliability</span>
+            </td>
+            <td class="py-3 px-4 text-slate-600 leading-relaxed">
+              <div class="lang-en">
+                • Multiple dead batteries and disconnected cables upon arrival.<br>
+                • <strong>Yunnan 2:</strong> 2 battery packs showed abnormal discharge (replaced).<br>
+                • <strong>Yunnan 1:</strong> Slow charging & rapid battery drop.
+              </div>
+              <div class="lang-zh text-slate-500 mt-1">
+                • 设备抵达后多次出现电池无电或电源线脱开。<br>
+                • <strong>云南2号:</strong> 2 块电池存在异常放电情况（目前已更换）。<br>
+                • <strong>云南1号:</strong> 充电慢、掉电快。
+              </div>
+            </td>
+            <td class="py-3 px-4 text-slate-700 leading-relaxed">
+              <div class="lang-en font-medium">
+                1. What are the recommended diagnosis steps for battery circuit and leakage?<br>
+                2. How can we physically and firmware-wise prevent sudden abnormal discharge in remote operation?
+              </div>
+              <div class="lang-zh text-slate-600 mt-1">
+                1. 电池电路排查及漏电检测的标准流程是什么？有什么维修建议？<br>
+                2. 针对后续野外部署，从硬件和固件层面如何避免突发异常放电？
+              </div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowStatus(this)" class="px-2 py-1 rounded text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 w-full text-center">
+                <option value="Open" selected>Open (待解决)</option>
+                <option value="In Progress">In Progress (进行中)</option>
+                <option value="Pending Info">Pending Info (待补充)</option>
+                <option value="Resolved">Resolved (已解决)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <textarea placeholder="Record WaterSense response & owner / 记录答复及负责人..." class="w-full bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-cyan-500 rounded p-1.5 text-xs text-slate-800 transition outline-none" rows="2">Check connector sealing & charging controller logs.</textarea>
+            </td>
+            <td class="py-3 px-2 text-center no-print">
+              <button onclick="deleteRow(this)" title="Delete Item" class="text-slate-300 hover:text-rose-500 transition">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+            </td>
+          </tr>
+
+          <!-- Row 02: Sensor Wiper (HIGH) -->
+          <tr data-priority="2" data-id="02" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-2.5 text-center font-bold text-slate-400">02</td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 cursor-pointer w-full text-center">
+                <option value="1">P1 • CRITICAL (极高)</option>
+                <option value="2" selected>P2 • HIGH (高)</option>
+                <option value="3">P3 • MEDIUM (中)</option>
+                <option value="4">P4 • LOW (低)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <div class="lang-en font-bold text-slate-800">Sensor Wiper & Biofouling</div>
+              <div class="lang-zh font-bold text-slate-800">传感器清洁刷与生物防附着</div>
+              <span class="inline-block mt-1 text-[10px] text-slate-400">Optical Probe Integrity</span>
+            </td>
+            <td class="py-3 px-4 text-slate-600 leading-relaxed">
+              <div class="lang-en">
+                • Wiper module currently fails to trigger on deployed unit.<br>
+                • Dianchi Lake has dense cyanobacteria / green algae blooms.<br>
+                • Dry cell status & lifespan unclear.
+              </div>
+              <div class="lang-zh text-slate-500 mt-1">
+                • 当前毛刷无法启动。<br>
+                • 滇池蓝藻、绿藻较多，水华严重。<br>
+                • 干电池电量及维持时间不明确。
+              </div>
+            </td>
+            <td class="py-3 px-4 text-slate-700 leading-relaxed">
+              <div class="lang-en font-medium">
+                1. Expected dry battery replacement cycle for wiper motor?<br>
+                2. Default self-cleaning interval?<br>
+                3. With wiper inactive, how quickly will baseline drift occur in dense algae, and what is the manual cleaning schedule?
+              </div>
+              <div class="lang-zh text-slate-600 mt-1">
+                1. 放干电池一般可以维持多久需要更换？<br>
+                2. 按照经验和现有后台数据污染附着速度如何？刷子多久自清洁一次？<br>
+                3. 毛刷失效对探头测量造成多大影响？大约多久会出现明显数据漂移？建议多久派人人工清理？
+              </div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowStatus(this)" class="px-2 py-1 rounded text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 w-full text-center">
+                <option value="Open" selected>Open (待解决)</option>
+                <option value="In Progress">In Progress (进行中)</option>
+                <option value="Pending Info">Pending Info (待补充)</option>
+                <option value="Resolved">Resolved (已解决)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <textarea placeholder="Record WaterSense response & owner / 记录答复及负责人..." class="w-full bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-cyan-500 rounded p-1.5 text-xs text-slate-800 transition outline-none" rows="2">Verify wiper motor trigger command via backend.</textarea>
+            </td>
+            <td class="py-3 px-2 text-center no-print">
+              <button onclick="deleteRow(this)" title="Delete Item" class="text-slate-300 hover:text-rose-500 transition">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+            </td>
+          </tr>
+
+          <!-- Row 03: Data Disparity (HIGH) -->
+          <tr data-priority="2" data-id="03" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-2.5 text-center font-bold text-slate-400">03</td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 cursor-pointer w-full text-center">
+                <option value="1">P1 • CRITICAL (极高)</option>
+                <option value="2" selected>P2 • HIGH (高)</option>
+                <option value="3">P3 • MEDIUM (中)</option>
+                <option value="4">P4 • LOW (低)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <div class="lang-en font-bold text-slate-800">Chlorophyll-a vs. BGA Discrepancy</div>
+              <div class="lang-zh font-bold text-slate-800">叶绿素 a 与藻蓝蛋白数据背离</div>
+              <span class="inline-block mt-1 text-[10px] text-slate-400">Scientific Accuracy</span>
+            </td>
+            <td class="py-3 px-4 text-slate-600 leading-relaxed">
+              <div class="lang-en">
+                • Day 1 readings:<br>
+                – Chlorophyll-a: <strong>~5.46 µg/L</strong> (mild bloom)<br>
+                – BGA (Phycocyanin): <strong>~300,000 cells/mL</strong> (severe bloom).<br>
+                Extreme divergence in ecological scale.
+              </div>
+              <div class="lang-zh text-slate-500 mt-1">
+                • 入水第 1 天实测数据：<br>
+                – 叶绿素 a: <strong>~5.46 µg/L</strong>（轻度水华）<br>
+                – BGA 藻蓝蛋白: <strong>~300,000 cells/mL</strong>（重度水华）<br>
+                两者数据级别差距极大。
+              </div>
+            </td>
+            <td class="py-3 px-4 text-slate-700 leading-relaxed">
+              <div class="lang-en font-medium">
+                1. Is this caused by fluorescence calibration limits / turbidity interference, or specific algal community composition?<br>
+                2. Are there prior case studies or transfer coefficients for high-concentration cyanobacteria?
+              </div>
+              <div class="lang-zh text-slate-600 mt-1">
+                1. 二者差距如此大是设备光学校准/荧光干扰引起的，还是水中藻类群落组成所致？<br>
+                2. 在此之前 WaterSense 是否有类似案例或对应拟合转换系数？
+              </div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowStatus(this)" class="px-2 py-1 rounded text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 w-full text-center">
+                <option value="Open" selected>Open (待解决)</option>
+                <option value="In Progress">In Progress (进行中)</option>
+                <option value="Pending Info">Pending Info (待补充)</option>
+                <option value="Resolved">Resolved (已解决)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <textarea placeholder="Record WaterSense response & owner / 记录答复及负责人..." class="w-full bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-cyan-500 rounded p-1.5 text-xs text-slate-800 transition outline-none" rows="2">Cross-check with Kunming Lab spectrophotometer.</textarea>
+            </td>
+            <td class="py-3 px-2 text-center no-print">
+              <button onclick="deleteRow(this)" title="Delete Item" class="text-slate-300 hover:text-rose-500 transition">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+            </td>
+          </tr>
+
+          <!-- Row 04: Calibration SOP (HIGH) -->
+          <tr data-priority="2" data-id="04" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-2.5 text-center font-bold text-slate-400">04</td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 cursor-pointer w-full text-center">
+                <option value="1">P1 • CRITICAL (极高)</option>
+                <option value="2" selected>P2 • HIGH (高)</option>
+                <option value="3">P3 • MEDIUM (中)</option>
+                <option value="4">P4 • LOW (低)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <div class="lang-en font-bold text-slate-800">Calibration & QA/QC Workflow</div>
+              <div class="lang-zh font-bold text-slate-800">标定校准与误差判断流程</div>
+              <span class="inline-block mt-1 text-[10px] text-slate-400">Standard Validation</span>
+            </td>
+            <td class="py-3 px-4 text-slate-600 leading-relaxed">
+              <div class="lang-en">
+                • Field data needs verification against certified Chinese local lab standards for government evaluation.
+              </div>
+              <div class="lang-zh text-slate-500 mt-1">
+                • 实测数据需与中国本地第三方认证实验室的标准方法进行质控比对。
+              </div>
+            </td>
+            <td class="py-3 px-4 text-slate-700 leading-relaxed">
+              <div class="lang-en font-medium">
+                1. What is the standard re-calibration procedure when field readings differ from lab results?<br>
+                2. Does the platform support dynamic / AI-based multi-point calibration curves?<br>
+                3. How to systematically distinguish fouling, hardware fault, and systematic drift?
+              </div>
+              <div class="lang-zh text-slate-600 mt-1">
+                1. 若设备实测精度与实验室结果存在偏差，标准二次校准流程是什么？<br>
+                2. 是否支持利用实验室数据进行 AI 或动态曲线拟合校准？<br>
+                3. 如何在数据流中区分探头污染、硬件故障与系统固有误差？
+              </div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowStatus(this)" class="px-2 py-1 rounded text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 w-full text-center">
+                <option value="Open" selected>Open (待解决)</option>
+                <option value="In Progress">In Progress (进行中)</option>
+                <option value="Pending Info">Pending Info (待补充)</option>
+                <option value="Resolved">Resolved (已解决)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <textarea placeholder="Record WaterSense response & owner / 记录答复及负责人..." class="w-full bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-cyan-500 rounded p-1.5 text-xs text-slate-800 transition outline-none" rows="2">Request calibration protocol document.</textarea>
+            </td>
+            <td class="py-3 px-2 text-center no-print">
+              <button onclick="deleteRow(this)" title="Delete Item" class="text-slate-300 hover:text-rose-500 transition">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+            </td>
+          </tr>
+
+          <!-- Row 05: API & Gov Trial (HIGH) -->
+          <tr data-priority="2" data-id="05" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-2.5 text-center font-bold text-slate-400">05</td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 cursor-pointer w-full text-center">
+                <option value="1">P1 • CRITICAL (极高)</option>
+                <option value="2" selected>P2 • HIGH (高)</option>
+                <option value="3">P3 • MEDIUM (中)</option>
+                <option value="4">P4 • LOW (低)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <div class="lang-en font-bold text-slate-800">API Interface & Gov Trial (Rambo / Natalie)</div>
+              <div class="lang-zh font-bold text-slate-800">API 接口对接与政府测试期 (Rambo / Natalie)</div>
+              <span class="inline-block mt-1 text-[10px] text-slate-400">Platform Integration</span>
+            </td>
+            <td class="py-3 px-4 text-slate-600 leading-relaxed">
+              <div class="lang-en">
+                • Chinese monitoring platform development in plan (Rambo).<br>
+                • <strong>Milestone:</strong> Chinese government requires a <strong>1–2 month formal comparison trial</strong>.
+              </div>
+              <div class="lang-zh text-slate-500 mt-1">
+                • 中方团队计划开发中文本地化监测管理平台。<br>
+                • <strong>关键里程碑:</strong> 中国政府需要 <strong>1–2 个月正式比对测试期</strong>。
+              </div>
+            </td>
+            <td class="py-3 px-4 text-slate-700 leading-relaxed">
+              <div class="lang-en font-medium">
+                1. Can WaterSense provide RESTful API / Webhook for real-time telemetry, historical logs, device status & GPS?<br>
+                2. When will API docs and sandbox endpoints be provided to start integration immediately?
+              </div>
+              <div class="lang-zh text-slate-600 mt-1">
+                1. WaterSense 是否可提供标准 API / Webhook 用于获取实时与历史数据、设备状态及 GPS？<br>
+                2. 何时可提供 API 开发文档及测试接口供联调？
+              </div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowStatus(this)" class="px-2 py-1 rounded text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 w-full text-center">
+                <option value="Open" selected>Open (待解决)</option>
+                <option value="In Progress">In Progress (进行中)</option>
+                <option value="Pending Info">Pending Info (待补充)</option>
+                <option value="Resolved">Resolved (已解决)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <textarea placeholder="Record WaterSense response & owner / 记录答复及负责人..." class="w-full bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-cyan-500 rounded p-1.5 text-xs text-slate-800 transition outline-none" rows="2">Maks to share API swagger/docs by end of week.</textarea>
+            </td>
+            <td class="py-3 px-2 text-center no-print">
+              <button onclick="deleteRow(this)" title="Delete Item" class="text-slate-300 hover:text-rose-500 transition">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+            </td>
+          </tr>
+
+          <!-- Row 06: Monitoring Frequency (MEDIUM) -->
+          <tr data-priority="3" data-id="06" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-2.5 text-center font-bold text-slate-400">06</td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 cursor-pointer w-full text-center">
+                <option value="1">P1 • CRITICAL (极高)</option>
+                <option value="2">P2 • HIGH (高)</option>
+                <option value="3" selected>P3 • MEDIUM (中)</option>
+                <option value="4">P4 • LOW (低)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <div class="lang-en font-bold text-slate-800">Monitoring & Upload Frequency</div>
+              <div class="lang-zh font-bold text-slate-800">监测采样与回传周期 (10分钟/次)</div>
+              <span class="inline-block mt-1 text-[10px] text-slate-400">Data Refresh Rate</span>
+            </td>
+            <td class="py-3 px-4 text-slate-600 leading-relaxed">
+              <div class="lang-en">
+                • Yunnan 2 backend was set to 10 min, but live web dashboard updates only ~1 hour.
+              </div>
+              <div class="lang-zh text-slate-500 mt-1">
+                • 云南2号后台已设置为 10 分钟一次，但实际 Web 页面仍约 1 小时更新一次。
+              </div>
+            </td>
+            <td class="py-3 px-4 text-slate-700 leading-relaxed">
+              <div class="lang-en font-medium">
+                1. Are sampling frequency, logging frequency, and cellular transmission interval managed separately?<br>
+                2. What is the explicit method to enforce genuine 10-minute real-time updates?
+              </div>
+              <div class="lang-zh text-slate-600 mt-1">
+                1. 设备采样频率、本地存储频率与蜂窝网络上传频率是否分别独立配置？<br>
+                2. 如何彻底锁定并调整为真实 10 分钟刷新一次？
+              </div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowStatus(this)" class="px-2 py-1 rounded text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 w-full text-center">
+                <option value="Open" selected>Open (待解决)</option>
+                <option value="In Progress">In Progress (进行中)</option>
+                <option value="Pending Info">Pending Info (待补充)</option>
+                <option value="Resolved">Resolved (已解决)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <textarea placeholder="Record WaterSense response & owner / 记录答复及负责人..." class="w-full bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-cyan-500 rounded p-1.5 text-xs text-slate-800 transition outline-none" rows="2">Verify transmission interval settings in device profile.</textarea>
+            </td>
+            <td class="py-3 px-2 text-center no-print">
+              <button onclick="deleteRow(this)" title="Delete Item" class="text-slate-300 hover:text-rose-500 transition">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+            </td>
+          </tr>
+
+          <!-- Row 07: Predictive Modeling (MEDIUM) -->
+          <tr data-priority="3" data-id="07" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-2.5 text-center font-bold text-slate-400">07</td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 cursor-pointer w-full text-center">
+                <option value="1">P1 • CRITICAL (极高)</option>
+                <option value="2">P2 • HIGH (高)</option>
+                <option value="3" selected>P3 • MEDIUM (中)</option>
+                <option value="4">P4 • LOW (低)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <div class="lang-en font-bold text-slate-800">Bloom Prediction & Early Warning</div>
+              <div class="lang-zh font-bold text-slate-800">水华预测与预警模型条件</div>
+              <span class="inline-block mt-1 text-[10px] text-slate-400">AI & Forecasting</span>
+            </td>
+            <td class="py-3 px-4 text-slate-600 leading-relaxed">
+              <div class="lang-en">
+                • Target: 24–72h cyanobacteria bloom early warning for local authorities.
+              </div>
+              <div class="lang-zh text-slate-500 mt-1">
+                • 目标：为当地环保管理部门提供 24–72 小时蓝藻水华及水质超标预警。
+              </div>
+            </td>
+            <td class="py-3 px-4 text-slate-700 leading-relaxed">
+              <div class="lang-en font-medium">
+                1. How long of a continuous baseline time series is required to train the model?<br>
+                2. What external variables (wind, temp, rain, solar radiation, lab nutrients) are mandatory inputs?
+              </div>
+              <div class="lang-zh text-slate-600 mt-1">
+                1. 设备部署后需要积累多长时间的数据才能开展预测？<br>
+                2. 实现 24–72 小时预警，除浮标探头外是否还需要气象、风速风向、降雨、实验室等外部数据？
+              </div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowStatus(this)" class="px-2 py-1 rounded text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200 w-full text-center">
+                <option value="Open" selected>Open (待解决)</option>
+                <option value="In Progress">In Progress (进行中)</option>
+                <option value="Pending Info">Pending Info (待补充)</option>
+                <option value="Resolved">Resolved (已解决)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <textarea placeholder="Record WaterSense response & owner / 记录答复及负责人..." class="w-full bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-cyan-500 rounded p-1.5 text-xs text-slate-800 transition outline-none" rows="2">Clarify data ingestion schema for external meteorological data.</textarea>
+            </td>
+            <td class="py-3 px-2 text-center no-print">
+              <button onclick="deleteRow(this)" title="Delete Item" class="text-slate-300 hover:text-rose-500 transition">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+            </td>
+          </tr>
+
+          <!-- Row 08: GPS Location (LOW) -->
+          <tr data-priority="4" data-id="08" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-2.5 text-center font-bold text-slate-400">08</td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200 cursor-pointer w-full text-center">
+                <option value="1">P1 • CRITICAL (极高)</option>
+                <option value="2">P2 • HIGH (高)</option>
+                <option value="3">P3 • MEDIUM (中)</option>
+                <option value="4" selected>P4 • LOW (低)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <div class="lang-en font-bold text-slate-800">GPS Location & Precision Coordinates</div>
+              <div class="lang-zh font-bold text-slate-800">GPS 定位更新与高精度经纬度</div>
+              <span class="inline-block mt-1 text-[10px] text-slate-400">GIS Asset Pinning</span>
+            </td>
+            <td class="py-3 px-4 text-slate-600 leading-relaxed">
+              <div class="lang-en">
+                • Yunnan 1 is in Kunming, but platform map still pins it in Poland.<br>
+                • Need exact Lat/Long displayed.
+              </div>
+              <div class="lang-zh text-slate-500 mt-1">
+                • 云南1号设备目前已在昆明，但平台定位仍显示在波兰。<br>
+                • 地图上需具备精准的经纬度显示。
+              </div>
+            </td>
+            <td class="py-3 px-4 text-slate-700 leading-relaxed">
+              <div class="lang-en font-medium">
+                1. Does GPS automatically refresh on outdoor fix or does it require manual platform update?<br>
+                2. Does the map UI show precise coordinates?
+              </div>
+              <div class="lang-zh text-slate-600 mt-1">
+                1. 定位如何更新，户外搜星后是否会自动回传，还是需要手动刷新重置？<br>
+                2. 在地图上是否有精准经纬度测量单位？
+              </div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowStatus(this)" class="px-2 py-1 rounded text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200 w-full text-center">
+                <option value="Open" selected>Open (待解决)</option>
+                <option value="In Progress">In Progress (进行中)</option>
+                <option value="Pending Info">Pending Info (待补充)</option>
+                <option value="Resolved">Resolved (已解决)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <textarea placeholder="Record WaterSense response & owner / 记录答复及负责人..." class="w-full bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-cyan-500 rounded p-1.5 text-xs text-slate-800 transition outline-none" rows="2">Verify satellite lock and cloud map cache.</textarea>
+            </td>
+            <td class="py-3 px-2 text-center no-print">
+              <button onclick="deleteRow(this)" title="Delete Item" class="text-slate-300 hover:text-rose-500 transition">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+            </td>
+          </tr>
+
+          <!-- Row 09: turbidityFlowLaser (LOW) -->
+          <tr data-priority="4" data-id="09" data-status="Open" class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-2.5 text-center font-bold text-slate-400">09</td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200 cursor-pointer w-full text-center">
+                <option value="1">P1 • CRITICAL (极高)</option>
+                <option value="2">P2 • HIGH (高)</option>
+                <option value="3">P3 • MEDIUM (中)</option>
+                <option value="4" selected>P4 • LOW (低)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <div class="lang-en font-bold text-slate-800">Dashboard Metric: turbidityFlowLaser</div>
+              <div class="lang-zh font-bold text-slate-800">后台参数 turbidityFlowLaser 释义</div>
+              <span class="inline-block mt-1 text-[10px] text-slate-400">Telemetry Fields</span>
+            </td>
+            <td class="py-3 px-4 text-slate-600 leading-relaxed">
+              <div class="lang-en">
+                • Field appears on dashboard but shows <strong>"No Data"</strong>.
+              </div>
+              <div class="lang-zh text-slate-500 mt-1">
+                • 显示面板上有该项目，但数值显示为 <strong>"No Data"</strong>。
+              </div>
+            </td>
+            <td class="py-3 px-4 text-slate-700 leading-relaxed">
+              <div class="lang-en font-medium">
+                1. What is this parameter and how is it distinct from normal Turbidity?<br>
+                2. Why is it empty (optional module or firmware switch)?
+              </div>
+              <div class="lang-zh text-slate-600 mt-1">
+                1. 该参数具体是什么？与普通 Turbidity（浊度）有何区别？<br>
+                2. 为何显示为 no data（需要选配激光模块还是固件未开启）？
+              </div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <select onchange="updateRowStatus(this)" class="px-2 py-1 rounded text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200 w-full text-center">
+                <option value="Open" selected>Open (待解决)</option>
+                <option value="In Progress">In Progress (进行中)</option>
+                <option value="Pending Info">Pending Info (待补充)</option>
+                <option value="Resolved">Resolved (已解决)</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <textarea placeholder="Record WaterSense response & owner / 记录答复及负责人..." class="w-full bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-cyan-500 rounded p-1.5 text-xs text-slate-800 transition outline-none" rows="2">Confirm sensor hardware configuration specification.</textarea>
+            </td>
+            <td class="py-3 px-2 text-center no-print">
+              <button onclick="deleteRow(this)" title="Delete Item" class="text-slate-300 hover:text-rose-500 transition">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Document Footer -->
+    <footer class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-700">
+          <span class="lang-en">Meeting Protocol:</span>
+          <span class="lang-zh">会议守则:</span>
+        </span>
+        <span>
+          <span class="lang-en">Cross-timezone coordination • Focus on Dianchi lake deployment blockers & immediate engineering actions.</span>
+          <span class="lang-zh">涉及三个时区，请准时出席 • 聚焦滇池下水实测瓶颈及本周内具体行动分工。</span>
+        </span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span>
+          <span class="lang-en">Joint Execution: <strong>Yunnan Noevera</strong> & <strong>WaterSense</strong></span>
+          <span class="lang-zh">联合执行：<strong>云南知恒智合</strong> ＆ <strong>WaterSense</strong></span>
+        </span>
+      </div>
+    </footer>
+
+    <!-- Version & Architecture Note (Client-Side Isolation Notice) -->
+    <div class="px-5 py-3 bg-slate-100/70 border-t border-slate-200 text-[11px] text-slate-500 no-print">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-slate-200 text-slate-700 font-mono font-semibold text-[10px] tracking-wide">
+            v1.2.0-Standalone
+          </span>
+          <span class="font-semibold text-slate-700 flex items-center gap-1.5">
+            <i class="fa-solid fa-shield-halved text-cyan-600"></i>
+            <span class="lang-en">Client-Side Architecture & Privacy Notice:</span>
+            <span class="lang-zh">前端架构与本地数据隔离说明：</span>
+          </span>
+        </div>
+        <div class="text-[10px] text-slate-400 font-mono">
+          <span>Build: 2026.09-Release</span> • <span>Static Vercel Deployment</span>
+        </div>
+      </div>
+      <p class="mt-1 leading-relaxed text-slate-600">
+        <span class="lang-en">
+          This matrix is deployed as a <strong>static, client-side application</strong>. All field observations, priority adjustments, status dropdowns, and meeting notes operate entirely within your local browser memory. No entries will overwrite the cloud template or affect other attendees viewing the page. Please use the <strong>"Export PDF"</strong> or <strong>"Copy Notes"</strong> buttons above to record and distribute meeting conclusions.
+        </span>
+        <span class="lang-zh">
+          本页面采用<strong>纯前端静态架构</strong>部署于 Vercel。您在表格内进行的任何优先级调整、状态切换、删除或纪要文字录入，均仅在当前个人浏览器内存中独立运行，<strong>绝不会覆盖或破坏云端原始模板，亦不会影响其他参会人员的屏幕显示</strong>。会议讨论完成后，请通过顶部的<strong>【导出 PDF】</strong>或<strong>【复制纪要】</strong>功能保存并向各方分发会议决议。
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Notification Toast Box (No alerts!) -->
+  <div id="toastBox" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-2.5 rounded-lg shadow-xl text-xs font-medium border border-slate-700 flex items-center gap-2 transition-opacity duration-300 opacity-0 pointer-events-none z-50">
+    <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+    <span id="toastMsg">Action completed successfully</span>
+  </div>
+
+  <script>
+    let currentLanguage = 'en';
+
+    // Switch Language Mode (bilingual, en, zh)
+    function switchLanguage(mode) {
+      currentLanguage = mode;
+      document.body.className = `mode-${mode} bg-slate-100 text-slate-800 antialiased min-h-screen p-3 md:p-6 transition-all`;
+
+      // Update button styling
+      const btnAll = document.getElementById('btnLangAll');
+      const btnEn = document.getElementById('btnLangEn');
+      const btnZh = document.getElementById('btnLangZh');
+
+      const activeClass = 'bg-cyan-600 text-white shadow-sm';
+      const inactiveClass = 'text-slate-300 hover:text-white';
+
+      if (btnAll) btnAll.className = `px-2.5 py-1 rounded-md transition ${mode === 'bilingual' ? activeClass : inactiveClass}`;
+      btnEn.className = `px-2.5 py-1 rounded-md transition ${mode === 'en' ? activeClass : inactiveClass}`;
+      btnZh.className = `px-2.5 py-1 rounded-md transition ${mode === 'zh' ? activeClass : inactiveClass}`;
+
+      updateDropdownLabels(mode);
+
+      showToast(mode === 'bilingual' ? 'Switched to Bilingual / 已切换至双语' : (mode === 'en' ? 'Switched to English' : '已切换为中文'));
+    }
+
+    // Synchronize select options and input placeholders with chosen language mode
+    function updateDropdownLabels(mode) {
+      const pMap = {
+        en: { '1': 'P1 • CRITICAL', '2': 'P2 • HIGH', '3': 'P3 • MEDIUM', '4': 'P4 • LOW' },
+        zh: { '1': 'P1 • 极高', '2': 'P2 • 高', '3': 'P3 • 中', '4': 'P4 • 低' },
+        bilingual: { '1': 'P1 • CRITICAL (极高)', '2': 'P2 • HIGH (高)', '3': 'P3 • MEDIUM (中)', '4': 'P4 • LOW (低)' }
+      };
+
+      const sMap = {
+        en: { 'Open': 'Open', 'In Progress': 'In Progress', 'Pending Info': 'Pending Info', 'Resolved': 'Resolved' },
+        zh: { 'Open': '待解决', 'In Progress': '进行中', 'Pending Info': '待补充', 'Resolved': '已解决' },
+        bilingual: { 'Open': 'Open (待解决)', 'In Progress': 'In Progress (进行中)', 'Pending Info': 'Pending Info (待补充)', 'Resolved': 'Resolved (已解决)' }
+      };
+
+      const filterPMap = {
+        en: { 'ALL': 'All Priorities', '1': 'P1 • Critical Only', '2': 'P2 • High Only', '3': 'P3 • Medium Only', '4': 'P4 • Low Only' },
+        zh: { 'ALL': '全部优先级', '1': 'P1 • 仅极高', '2': 'P2 • 仅高', '3': 'P3 • 仅中', '4': 'P4 • 仅低' },
+        bilingual: { 'ALL': 'All Priorities (全部)', '1': 'P1 • Critical Only (仅极高)', '2': 'P2 • High Only (仅高)', '3': 'P3 • Medium Only (仅中)', '4': 'P4 • Low Only (仅低)' }
+      };
+
+      const filterSMap = {
+        en: { 'ALL': 'All Status', 'Open': 'Open', 'In Progress': 'In Progress', 'Pending Info': 'Pending Info', 'Resolved': 'Resolved' },
+        zh: { 'ALL': '全部状态', 'Open': '待解决', 'In Progress': '进行中', 'Pending Info': '待补充', 'Resolved': '已解决' },
+        bilingual: { 'ALL': 'All Status (全部状态)', 'Open': 'Open (待解决)', 'In Progress': 'In Progress (进行中)', 'Pending Info': 'Pending Info (待补充)', 'Resolved': 'Resolved (已解决)' }
+      };
+
+      // 1. Update Priority Filter dropdown
+      const pFilter = document.getElementById('priorityFilter');
+      if (pFilter) {
+        Array.from(pFilter.options).forEach(opt => {
+          if (filterPMap[mode] && filterPMap[mode][opt.value]) {
+            opt.textContent = filterPMap[mode][opt.value];
+          }
+        });
+      }
+
+      // 2. Update Status Filter dropdown
+      const sFilter = document.getElementById('statusFilter');
+      if (sFilter) {
+        Array.from(sFilter.options).forEach(opt => {
+          if (filterSMap[mode] && filterSMap[mode][opt.value]) {
+            opt.textContent = filterSMap[mode][opt.value];
+          }
+        });
+      }
+
+      // 3. Update all table row Priority dropdowns
+      document.querySelectorAll('#tableBody select[onchange*="updateRowPriority"]').forEach(sel => {
+        Array.from(sel.options).forEach(opt => {
+          if (pMap[mode] && pMap[mode][opt.value]) {
+            opt.textContent = pMap[mode][opt.value];
+          }
+        });
+      });
+
+      // 4. Update all table row Status dropdowns
+      document.querySelectorAll('#tableBody select[onchange*="updateRowStatus"]').forEach(sel => {
+        Array.from(sel.options).forEach(opt => {
+          if (sMap[mode] && sMap[mode][opt.value]) {
+            opt.textContent = sMap[mode][opt.value];
+          }
+        });
+      });
+
+      // 5. Update Search Input Placeholder
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        if (mode === 'en') searchInput.placeholder = 'Filter keyword...';
+        else if (mode === 'zh') searchInput.placeholder = '检索关键词...';
+        else searchInput.placeholder = 'Filter keyword / 检索关键词...';
+      }
+
+      // 6. Update Meeting Action Textarea placeholders
+      const notePlaceholders = {
+        en: 'Record WaterSense response & owner...',
+        zh: '记录答复及负责人...',
+        bilingual: 'Record WaterSense response & owner / 记录答复及负责人...'
+      };
+      document.querySelectorAll('#tableBody textarea').forEach(ta => {
+        if (ta.placeholder && (ta.placeholder.includes('Record WaterSense') || ta.placeholder.includes('记录答复'))) {
+          ta.placeholder = notePlaceholders[mode];
+        }
+      });
+    }
+
+    // Show Non-intrusive Toast Notification
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('toastBox');
+      const msgElem = document.getElementById('toastMsg');
+      const iconElem = document.getElementById('toastIcon');
+
+      msgElem.innerText = msg;
+      iconElem.className = isError ? 'fa-solid fa-circle-exclamation text-rose-400 text-sm' : 'fa-solid fa-circle-check text-emerald-400 text-sm';
+      
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2400);
+    }
+
+    // Update badge styling according to selected priority
+    function updateRowPriority(selectElem) {
+      const val = selectElem.value;
+      const row = selectElem.closest('tr');
+      row.setAttribute('data-priority', val);
+
+      selectElem.className = 'px-2 py-1 rounded text-xs font-bold cursor-pointer w-full text-center transition ';
+      if (val === '1') {
+        selectElem.className += 'bg-rose-50 text-rose-700 border border-rose-200';
+      } else if (val === '2') {
+        selectElem.className += 'bg-amber-50 text-amber-700 border border-amber-200';
+      } else if (val === '3') {
+        selectElem.className += 'bg-blue-50 text-blue-700 border border-blue-200';
+      } else {
+        selectElem.className += 'bg-slate-100 text-slate-600 border border-slate-200';
+      }
+      recalculateCounts();
+    }
+
+    // Update row status
+    function updateRowStatus(selectElem) {
+      const val = selectElem.value;
+      const row = selectElem.closest('tr');
+      row.setAttribute('data-status', val);
+
+      selectElem.className = 'px-2 py-1 rounded text-xs font-semibold w-full text-center transition ';
+      if (val === 'Open') {
+        selectElem.className += 'bg-amber-50 text-amber-700 border border-amber-200';
+      } else if (val === 'In Progress') {
+        selectElem.className += 'bg-cyan-50 text-cyan-700 border border-cyan-200';
+      } else if (val === 'Resolved') {
+        selectElem.className += 'bg-emerald-50 text-emerald-700 border border-emerald-200';
+      } else {
+        selectElem.className += 'bg-slate-100 text-slate-600 border border-slate-200';
+      }
+    }
+
+    // Sort table rows by Priority (1 to 4)
+    function sortByPriority() {
+      const tbody = document.getElementById('tableBody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      
+      rows.sort((a, b) => {
+        const pA = parseInt(a.getAttribute('data-priority')) || 99;
+        const pB = parseInt(b.getAttribute('data-priority')) || 99;
+        return pA - pB;
+      });
+
+      rows.forEach(row => tbody.appendChild(row));
+      showToast('Table sorted by Priority (P1 to P4)');
+    }
+
+    // Apply combined filters: Priority + Status + Keyword Search
+    function applyFilters() {
+      const pFilter = document.getElementById('priorityFilter').value;
+      const sFilter = document.getElementById('statusFilter').value;
+      const search = document.getElementById('searchInput').value.toLowerCase().trim();
+      const rows = document.querySelectorAll('#tableBody tr');
+
+      rows.forEach(row => {
+        const rowPriority = row.getAttribute('data-priority');
+        const rowStatus = row.getAttribute('data-status');
+        const rowText = row.innerText.toLowerCase();
+
+        const matchP = (pFilter === 'ALL' || rowPriority === pFilter);
+        const matchS = (sFilter === 'ALL' || rowStatus === sFilter);
+        const matchSearch = (search === '' || rowText.includes(search));
+
+        if (matchP && matchS && matchSearch) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // Delete row
+    function deleteRow(btn) {
+      const row = btn.closest('tr');
+      row.remove();
+      recalculateCounts();
+      showToast('Item deleted');
+    }
+
+    // Add a new discussion item row with bilingual support
+    function addNewRow() {
+      const tbody = document.getElementById('tableBody');
+      const rowCount = tbody.querySelectorAll('tr').length + 1;
+      const formattedId = rowCount < 10 ? '0' + rowCount : rowCount;
+
+      const newTr = document.createElement('tr');
+      newTr.setAttribute('data-priority', '2');
+      newTr.setAttribute('data-id', formattedId);
+      newTr.setAttribute('data-status', 'Open');
+      newTr.className = 'hover:bg-slate-50/80 transition-colors';
+
+      newTr.innerHTML = `
+        <td class="py-3 px-2.5 text-center font-bold text-slate-400">${formattedId}</td>
+        <td class="py-3 px-3 text-center">
+          <select onchange="updateRowPriority(this)" class="px-2 py-1 rounded text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 cursor-pointer w-full text-center">
+            <option value="1">P1 • CRITICAL (极高)</option>
+            <option value="2" selected>P2 • HIGH (高)</option>
+            <option value="3">P3 • MEDIUM (中)</option>
+            <option value="4">P4 • LOW (低)</option>
+          </select>
+        </td>
+        <td class="py-3 px-4">
+          <input type="text" placeholder="Category (EN / 中文)" class="w-full bg-slate-50 border border-slate-200 rounded p-1 text-xs font-bold focus:outline-none focus:border-cyan-500 mb-1" />
+          <input type="text" placeholder="Tag (e.g. Firmware / 硬件)" class="w-full bg-slate-50 border border-slate-200 rounded p-1 text-[11px] text-slate-500 focus:outline-none focus:border-cyan-500" />
+        </td>
+        <td class="py-3 px-4 text-slate-600 leading-relaxed">
+          <textarea placeholder="Describe field observations or current test findings (EN & ZH)..." class="w-full bg-slate-50 border border-slate-200 rounded p-1.5 text-xs focus:outline-none focus:border-cyan-500" rows="2"></textarea>
+        </td>
+        <td class="py-3 px-4 text-slate-700 leading-relaxed">
+          <textarea placeholder="Enter specific questions for Maks..." class="w-full bg-slate-50 border border-slate-200 rounded p-1.5 text-xs focus:outline-none focus:border-cyan-500" rows="2"></textarea>
+        </td>
+        <td class="py-3 px-3 text-center">
+          <select onchange="updateRowStatus(this)" class="px-2 py-1 rounded text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 w-full text-center">
+            <option value="Open" selected>Open (待解决)</option>
+            <option value="In Progress">In Progress (进行中)</option>
+            <option value="Pending Info">Pending Info (待补充)</option>
+            <option value="Resolved">Resolved (已解决)</option>
+          </select>
+        </td>
+        <td class="py-3 px-4">
+          <textarea placeholder="Record WaterSense response & owner / 记录答复及负责人..." class="w-full bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-cyan-500 rounded p-1.5 text-xs text-slate-800 transition outline-none" rows="2"></textarea>
+        </td>
+        <td class="py-3 px-2 text-center no-print">
+          <button onclick="deleteRow(this)" title="Delete Item" class="text-slate-300 hover:text-rose-500 transition">
+            <i class="fa-solid fa-trash-can text-sm"></i>
+          </button>
+        </td>
+      `;
+
+      tbody.appendChild(newTr);
+      updateDropdownLabels(currentLanguage);
+      recalculateCounts();
+      showToast('New item added');
+    }
+
+    // Recalculate priority counters
+    function recalculateCounts() {
+      const rows = document.querySelectorAll('#tableBody tr');
+      let total = rows.length;
+      let crit = 0, high = 0, med = 0, low = 0;
+
+      rows.forEach(r => {
+        const p = r.getAttribute('data-priority');
+        if (p === '1') crit++;
+        else if (p === '2') high++;
+        else if (p === '3') med++;
+        else if (p === '4') low++;
+      });
+
+      document.getElementById('totalCount').innerText = total;
+      document.getElementById('critCount').innerText = crit;
+      document.getElementById('highCount').innerText = high;
+      document.getElementById('medCount').innerText = med;
+      document.getElementById('lowCount').innerText = low;
+    }
+
+    // Copy meeting summary as formatted text to clipboard
+    function copySummaryToClipboard() {
+      const rows = document.querySelectorAll('#tableBody tr');
+      let summaryText = `# Technical Coordination Meeting - WaterSense & Yunnan Deployments\n`;
+      summaryText += `Date: ${new Date().toLocaleDateString()} | Targets: Yunnan 1 & 2\n`;
+      summaryText += `Host / 主持人: Rambo | WaterSense: Mateusz, Kacper (Optional / 可选: Maks) | Yunnan Team / 云南团队: Natalie, Toto\n\n`;
+
+      rows.forEach(r => {
+        const id = r.getAttribute('data-id');
+        const pVal = r.getAttribute('data-priority');
+        const pTag = pVal === '1' ? 'P1 CRITICAL' : (pVal === '2' ? 'P2 HIGH' : (pVal === '3' ? 'P3 MEDIUM' : 'P4 LOW'));
+        const categoryElem = r.querySelector('td:nth-child(3)');
+        const category = categoryElem ? categoryElem.innerText.replace(/\n+/g, ' - ') : '';
+        const notes = r.querySelector('textarea[placeholder*="Record WaterSense"]') ? r.querySelector('textarea[placeholder*="Record WaterSense"]').value : '';
+        const statusSelect = r.querySelector('td:nth-child(6) select');
+        const status = statusSelect ? statusSelect.value : 'Open';
+
+        summaryText += `### [${id}] [${pTag}] [${status}] ${category}\n`;
+        summaryText += `Decision / Action: ${notes || '(No notes entered)'}\n\n`;
+      });
+
+      // Standard fallback copy method
+      const dummy = document.createElement('textarea');
+      document.body.appendChild(dummy);
+      dummy.value = summaryText;
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+
+      showToast('Meeting notes copied to clipboard!');
+    }
+
+    // Auto-initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateDropdownLabels(currentLanguage);
+      sortByPriority();
+      recalculateCounts();
+    });
+  </script>
+</body>
+</html>
